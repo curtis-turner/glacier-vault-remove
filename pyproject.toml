@@ -4,13 +4,24 @@ version = "0.0.1"
 description = "Simple CLI to remove all Vaults/Archives from S3 Glacier"
 authors = ["curtis-turner <cjturner714@gmail.com>"]
 readme = "README.md"
-packages = [{include = "glacier_vault_remove"}]
+packages = [{include = "glacier_vault_remove", from = "src"}]
 
 [tool.poetry.dependencies]
 python = ">3.10 <4.0"
 boto3 = "^1.26.41"
+loguru = "^0.6.0"
+click = "^8.1.3"
 
+
+[tool.poetry.group.dev.dependencies]
+black = "^22.12.0"
+flake8 = "^6.0.0"
+isort = "^5.11.4"
+boto3-stubs = "^1.26.41"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+cli = 'glacier_vault_remove.cli:cli'
